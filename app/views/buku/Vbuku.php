@@ -210,6 +210,28 @@
                             <?php endforeach ?>
                                 
                         </div>
+
+                        <div class="row" style="width:100%">
+                            <div class="col-md-6 mt-5 ml-auto">
+                                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-2 ml-auto" role="group" aria-label="First group">
+                                    <?php if($data['jumlahHalaman'] != 1): ?>
+                                        <?= $data['halamanSebelum'] ?>
+                                        <?php for($hal = 1; $hal <= $data['jumlahHalaman']; $hal++):
+                                            if($hal == $data['halamanAktif']): ?>
+                                            <a href="<?= BASE_URL ?>buku/<?= $hal ?>" class="btn btn-primary"><?= $hal ?></a>
+                                            <?php else: ?>
+                                            <a href="<?= BASE_URL ?>buku/<?= $hal ?>" class="btn btn-light"><?= $hal ?></a>
+                                        <?php 
+                                            endif;
+                                        endfor ?>
+                                        <?= $data['halamanSesudah'] ?>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                            </div>
+                            
+                        </div>
                     </div>
                     <!-- End Page Content -->
 

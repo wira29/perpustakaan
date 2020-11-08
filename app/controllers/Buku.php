@@ -12,12 +12,30 @@ class Buku extends Controller {
 
     public function index()
     {
+        // pagination
+        $jumlahDataPerHalaman = 12;
+        $jumlahData    = $this->model('MBuku')->hitungBuku();
+        $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+        $halamanAktif = (HALAMAN_AKTIF != "") ? HALAMAN_AKTIF : 1;
+        $awalData = ( $jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+        $sebelum = $halamanAktif - 1;
+        $sesudah = $halamanAktif + 1;
+
+        $halamanSebelum = ($halamanAktif > 1) ? '<a href="'.BASE_URL.'buku/'. $sebelum .'" class="btn btn-light">< sebelum</a>' : '';
+        $halamanSesudah = ($halamanAktif < $jumlahHalaman) ? '<a href="'.BASE_URL.'buku/'. $sesudah .'" class="btn btn-light">sesudah ></a>' : '';
+
+        // echo $halamanAktif + 1;
         $data = array(
             'header1' => "Buku",
             'header2' => "kelola buku perpustakaan di halaman ini.",
 
-            'bukuAll' => $this->model('MBuku')->getBukuAll(),
-            'kategori' => $this->model('MBuku')->getKategori(),  
+            'bukuAll' => $this->model('MBuku')->getBukuAll($awalData, $jumlahDataPerHalaman),
+            'kategori' => $this->model('MBuku')->getKategori(),
+            'jumlahHalaman' => $jumlahHalaman,
+            'halamanSebelum'   => $halamanSebelum,  
+            'halamanSesudah'   => $halamanSesudah,  
+            'halamanAktif'   => $halamanAktif,
         );
         $this->view('templates/header',$data);
         $this->view('buku/Vbuku', $data);
@@ -84,7 +102,11 @@ class Buku extends Controller {
             'header2' => "kelola buku perpustakaan di halaman ini.",
 
             'bukuAll' => $this->model('MBuku')->getBuku($_POST),
-            'kategori' => $this->model('MBuku')->getKategori(),  
+            'kategori' => $this->model('MBuku')->getKategori(),
+            'jumlahHalaman' => '',
+            'halamanSebelum'   => '',  
+            'halamanSesudah'   => '',  
+            'halamanAktif'   => '',
         );
         $this->view('templates/header',$data);
         $this->view('buku/Vbuku', $data);

@@ -7,15 +7,22 @@ class MBuku {
         $this->db = new Database;
     }
 
+    public function hitungBuku()
+    {
+        $this->db->query("SELECT COUNT(id_buku) as jumlah_buku FROM tb_buku");
+        $jumlah = $this->db->resultSet();
+        return $jumlah[0]['jumlah_buku'];
+    }
+
     public function getKategori()
     {
         $this->db->query("SELECT * FROM tb_kategori");
         return $this->db->resultSet();
     }
 
-    public function getBukuAll()
+    public function getBukuAll($awal, $limit)
     {
-        $this->db->query("SELECT * FROM tb_buku");
+        $this->db->query("SELECT * FROM tb_buku LIMIT $awal, $limit");
         return $this->db->resultSet();
     }
 
