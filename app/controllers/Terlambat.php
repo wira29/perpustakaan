@@ -55,4 +55,18 @@ class Terlambat extends Controller {
         $this->view('terlambat/Vterlambat',$data);
         $this->view('templates/footer');
     }
+
+    public function exportExcel()
+    {
+        $data = $this->model('MTerlambat')->getTerlambat();
+
+        $this->view('terlambat/export_excel', $data);
+    }
+
+    public function print()
+    {
+        $data = $this->model('MTerlambat')->getTerlambat();
+
+        $this->view('terlambat/print', $data);
+    }
 }

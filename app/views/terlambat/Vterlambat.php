@@ -95,7 +95,11 @@
             </tbody>
         </table>
         </div>
-        
+        <div class="card-footer">
+            <a href="<?= BASE_URL ?>terlambat/exportExcel" class="btn btn-success btn-sm"><i class="fas fa-file-excel mr-2"></i> Print Excel</a>
+
+            <button onclick="window.open('<?= BASE_URL ?>terlambat/print','_blank')" type="button" class="btn btn-primary btn-sm"><i class="fas fa-print"></i> Print</button>
+        </div>
 
         
     </div>

@@ -103,4 +103,18 @@ class Peminjam extends Controller {
 
         // var_dump($_POST);
     }
+
+    public function exportExcel()
+    {
+        $data = $this->model('MPeminjam')->getPeminjamAll();
+
+        $this->view('peminjam/export_excel', $data);
+    }
+
+    public function print()
+    {
+        $data = $this->model('MPeminjam')->getPeminjamAll();
+
+        $this->view('peminjam/print', $data);
+    }
 }
