@@ -4,7 +4,7 @@ class Buku extends Controller {
 
     public function __construct()
     {
-        if(!$_SESSION['id_admin'])
+        if(!isset($_SESSION['id_admin']))
         {
             header('Location: ' . BASE_URL .'login');
         }

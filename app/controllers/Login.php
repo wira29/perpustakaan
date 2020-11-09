@@ -4,7 +4,7 @@ class Login extends controller {
 
     public function __construct()
     {
-        if(!session_id())
+        if(isset($_SESSION['id_admin']))
         {
             header('Location: ' . BASE_URL .'beranda');
         }

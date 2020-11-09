@@ -15,6 +15,9 @@
 
         <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>assets/dist/css/login.css">
 
+        <!-- Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
         <!-- ============================================================================================== -->
 
         <!-- Javascript -->
@@ -28,38 +31,19 @@
         <div class="container">
             <div class="background"></div>
 
-            <div class="col-md-6 ml-auto mr-auto mt-5">
-                <div class="card">
+            <div class="box">
+                    <h1>Login</h1>
                     <form method="POST" action="<?= BASE_URL ?>login/masuk">
-                    <div class="card-body">
-                        <h3>Login Admin</h3>
-                        <hr>
-                        <div class="col-md-12 text-center">
-                            <img src="<?= BASE_URL ?>assets/img/logo.png" height="100" alt="">
-                        </div>
-                        <div class="col-md-12 mt-5">
-                            <?= Flasher::flash() ?>
-                        </div>
-                        <div class="input-group mb-3 mt-5">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text text-white" style="background-color:#0D6050" id="basic-addon1"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text text-white" style="background-color:#0D6050" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                            </div>
-                            <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+                    <div class="text-box">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" value="">
                     </div>
-                    <div>
-                        <div class="card-footer text-center">
-                            <button type="submit" class="btn btn-primary" style="width:80%; background-color:#0D6050">Login</button>
-                        </div>
+                    <div class="text-box">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" value="">
                     </div>
-                </form>
-                </div>
+                    <button type="submit">Login</button>
+                    </form>
             </div>
             
         </div>
